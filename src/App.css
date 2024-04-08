@@ -2,6 +2,12 @@
   margin: 0 auto;
 }
 
+body {
+  overflow: hidden; 
+  -ms-overflow-style: none; 
+  overflow: -moz-scrollbars-none; 
+}
+
 .bg-cover {
   background-image: url('../public//images/ventura.jpg');
 }

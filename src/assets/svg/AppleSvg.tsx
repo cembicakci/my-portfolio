@@ -1,6 +1,14 @@
-export const AppleSvg = () => {
+
+import React, { FC } from "react"
+
+interface SvgProps {
+	width: string,
+	height: string
+}
+
+export const AppleSvg: FC<SvgProps> = ({ width = "102px", height = "102px" }) => {
 	return (
-		<svg fill="#fff" height="102px" width="102px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.773 22.773">
+		<svg fill="#fff" height={height} width={width} version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.773 22.773">
 			<g>
 				<g>
 					<path d="M15.769,0c0.053,0,0.106,0,0.162,0c0.13,1.606-0.483,2.806-1.228,3.675c-0.731,0.863-1.732,1.7-3.351,1.573
