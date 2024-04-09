@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import { AppleSvg } from './assets/svg';
 import AboutMeModal from './components/Modal/AboutMe';
+import ContactModal from './components/Modal/Contact';
 
 const App = () => {
 
@@ -18,8 +19,11 @@ const App = () => {
 		return () => clearTimeout(timer);
 	}, []);
 
-	const [tab, setTab] = useState(1)
 	const [aboutMeModal, setAboutMeModal] = useState(false)
+	const [contactModal, setContactModal] = useState(false)
+
+	const [maiTooltip, setMailTooltip] = useState(false)
+	const [contactTooltip, setContactTooltip] = useState(false)
 
 	return (
 		<div className="h-screen w-screen bg-black">
@@ -83,19 +87,23 @@ const App = () => {
 								</div>
 
 								{
-									tab !== 2 && (
+									!aboutMeModal && !contactModal && (
 										<div className='cursor-pointer'>
-											<p className={`text-sm text-white ${tab === 1 && 'font-bold'}`}>Finder</p>
+											<p className={`text-sm text-white font-bold`}>Finder</p>
 										</div>
 									)
 								}
 
-								<div className='cursor-pointer' onClick={() => { setAboutMeModal(true), setTab(2) }}>
-									<p className={`text-sm text-white ${tab === 2 && 'font-bold'}`}>About Me</p>
-								</div>
+								{
+									!contactModal && (
+										<div className='cursor-pointer' onClick={() => { setAboutMeModal(true) }}>
+											<p className={`text-sm text-white ${aboutMeModal && 'font-bold'}`}>About Me</p>
+										</div>
+									)
+								}
 
-								<div className='cursor-pointer'>
-									<p className='text-sm text-white'>Contact</p>
+								<div className='cursor-pointer' onClick={() => { setContactModal(true) }}>
+									<p className={`text-sm text-white ${contactModal && 'font-bold'}`}>Contact</p>
 								</div>
 
 								<div className='cursor-pointer'>
@@ -103,21 +111,50 @@ const App = () => {
 								</div>
 							</div>
 
-							<div className='flex-1 w-full'>
-								<h1>First Screen</h1>
+							<div className='flex-1 w-full px-4 my-4'>
+
+								<div className='w-16 h-16 bg-slate-100 rounded-xl m-2 p-1 flex items-center justify-center'>
+									<img src='public/images/react.png' className='w-16 h-16 object-contain' />
+								</div>
+								<div className='w-20 h-20'>
+									<img src='public/images/linkedin.png' className=' object-contain' />
+								</div>
+								<div className='w-20 h-20'>
+									<img src='public/images/github.png' className='object-contain' />
+								</div>
+
 							</div>
 
 							<div
 								className='bg-gray-900 bg-opacity-30 text-slate-300 bottom-5 flex items-center justify-center px-2 py-2 rounded-[14px] border border-gray-600 mb-4'
 							>
 								<div
-									className='flex justify-between'
+									className='flex justify-between gap-1 relative'
 								>
-									<div>
-										<img src='public/images/email.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2   transform transition-all ease-out" />
+									<div
+										onMouseEnter={() => { setMailTooltip(true) }}
+										onMouseLeave={() => { setMailTooltip(false) }}
+									>
+										<a
+											target="_blank"
+											href="mailto:cmbicakci@gmail.com"
+										>
+											<img src='public/images/email.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2   transform transition-all ease-out" />
+										</a>
+
+										<div className={`absolute whitespace-nowrap -top-14 -left-8 border border-gray-600 bg-gray-900 bg-opacity-30 text-slate-300 rounded-md px-4 py-2 ${maiTooltip ? 'block' : 'hidden'}`}>
+											<p className="text-sm ">Send me an email</p>
+										</div>
 									</div>
-									<div onClick={() => { setAboutMeModal(true), setTab(2) }}>
+									<div
+										onClick={() => { setContactModal(true) }}
+										onMouseEnter={() => { setContactTooltip(true) }}
+										onMouseLeave={() => { setContactTooltip(false) }}
+									>
 										<img src='public/images/contact.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2   transform transition-all ease-out" />
+										<div className={`absolute whitespace-nowrap -top-14 -right-6  border border-gray-600 bg-gray-900 bg-opacity-30 text-slate-300 rounded-md px-4 py-2 ${contactTooltip ? 'block' : 'hidden'}`}>
+											<p className="text-sm ">Contact Me</p>
+										</div>
 									</div>
 								</div>
 
@@ -130,14 +167,8 @@ const App = () => {
 				)
 
 			}
-			{aboutMeModal &&
-				<AboutMeModal
-					closeModal={() => {
-						setAboutMeModal(false)
-						setTab(1)
-					}}
-				/>
-			}
+			{aboutMeModal && <AboutMeModal closeModal={() => { setAboutMeModal(false) }} handleContact={() => { setAboutMeModal(false, setContactModal(true)) }} />}
+			{contactModal && <ContactModal closeModal={() => { setContactModal(false) }} handleAboutMe={() => { setContactModal(false), setAboutMeModal(true) }} />}
 		</div>
 	)
 }

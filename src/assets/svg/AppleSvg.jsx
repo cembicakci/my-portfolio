@@ -1,12 +1,5 @@
-
-import React, { FC } from "react"
-
-interface SvgProps {
-	width: string,
-	height: string
-}
-
-export const AppleSvg: FC<SvgProps> = ({ width = "102px", height = "102px" }) => {
+/* eslint-disable react/prop-types */
+export const AppleSvg = ({ width = "102px", height = "102px" }) => {
 	return (
 		<svg fill="#fff" height={height} width={width} version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22.773 22.773">
 			<g>

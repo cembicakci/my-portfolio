@@ -3,7 +3,7 @@ import Button from "../../Button"
 import ItemRow from "../../ItemRow"
 import Modal from "../index"
 
-const AboutMe = ({ closeModal }) => {
+const AboutMe = ({ closeModal, handleContact }) => {
 	return (
 		<Modal
 			closeModal={closeModal}
@@ -47,7 +47,7 @@ const AboutMe = ({ closeModal }) => {
 					/>
 					<Button
 						text={"Contact"}
-						click={() => { }}
+						click={() => { handleContact() }}
 					/>
 				</div>
 			</div>
