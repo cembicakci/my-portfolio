@@ -5,7 +5,7 @@ import { useState } from "react"
 import { motion } from 'framer-motion';
 import { CloseSvg } from "../../assets/svg"
 
-const Modal = ({ closeModal, title, children }) => {
+const Modal = ({ closeModal, title, children, size = 'lg' }) => {
 
 	const [closeHover, setCloseHover] = useState(false)
 
@@ -19,7 +19,7 @@ const Modal = ({ closeModal, title, children }) => {
 					<div className="absolute inset-0 bg-gray-900 opacity-30"></div>
 				</div>
 
-				<div className="inline-block align-bottom rounded-lg overflow-hidden transform transition-all sm:my-20 sm:align-middle sm:max-w-lg sm:w-full">
+				<div className={`inline-block align-bottom rounded-lg overflow-hidden transform transition-all sm:my-20 sm:align-middle sm:w-full ${size === 'full' ? 'sm:max-w-5xl' : 'sm:max-w-lg'} `}>
 
 					<motion.div
 						initial={{ scale: 0 }}

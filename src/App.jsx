@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { AppleSvg, MaximizeSvg } from './assets/svg';
 import AboutMeModal from './components/Modal/AboutMe';
 import ContactModal from './components/Modal/Contact';
+import ProjectsModal from './components/Modal/Projects';
 import moment from 'moment';
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
 
 	const [aboutMeModal, setAboutMeModal] = useState(false)
 	const [contactModal, setContactModal] = useState(false)
+	const [projectsModal, setProjectsModal] = useState(false)
 
 	const [maiTooltip, setMailTooltip] = useState(false)
 	const [contactTooltip, setContactTooltip] = useState(false)
@@ -108,7 +110,7 @@ const App = () => {
 										<p className={`text-sm text-white ${contactModal && 'font-bold'}`}>Contact</p>
 									</div>
 
-									<div className='cursor-pointer'>
+									<div className='cursor-pointer' onClick={() => { setProjectsModal(true) }}>
 										<p className='text-sm text-white'>Projects</p>
 									</div>
 								</div>
@@ -183,8 +185,6 @@ const App = () => {
 									</a>
 
 								</div>
-
-
 							</div>
 
 							<div
@@ -231,6 +231,7 @@ const App = () => {
 			}
 			{aboutMeModal && <AboutMeModal closeModal={() => { setAboutMeModal(false) }} handleContact={() => { setAboutMeModal(false, setContactModal(true)) }} />}
 			{contactModal && <ContactModal closeModal={() => { setContactModal(false) }} handleAboutMe={() => { setContactModal(false), setAboutMeModal(true) }} />}
+			{projectsModal && <ProjectsModal closeModal={() => { setProjectsModal(false) }} />}
 		</div>
 	)
 }
