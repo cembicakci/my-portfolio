@@ -29,6 +29,27 @@ const App = () => {
 	const [projectsTooltip, setProjectTooltop] = useState(false)
 	const [contactTooltip, setContactTooltip] = useState(false)
 
+	const [weatherData, setWeatherData] = useState({})
+
+	useEffect(() => {
+
+		navigator.geolocation.getCurrentPosition((position) => {
+			console.log(position)
+
+			const latitude = position.coords.latitude;
+			const longitude = position.coords.longitude;
+
+			fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=8aa3ebfb7eb0ce4277f8b9eabb365502`)
+				.then(response => response.json())
+				.then(data => setWeatherData(data))
+				.catch(error => console.error('Hava durumu API\'sine erişilemedi.', error));
+
+		}, (error) => {
+			console.error('Konum bilgisine erişilemedi.', error);
+		})
+		
+	}, [])
+
 	return (
 		<div className="h-screen w-screen bg-black">
 			{
@@ -123,70 +144,84 @@ const App = () => {
 								</div>
 							</div>
 
-							<div className='flex-1 flex justify-center px-4 my-4 self-start gap-3'>
+							<div className='flex-1 flex justify-between items-start w-full px-4 my-4 self-start gap-3'>
 
-								<div>
-									<a onClick={() => { setProjectsModal(true) }}>
-										<div className='m-2 flex flex-col items-center justify-center' >
-											<div className='w-16 h-16 bg-slate-100 rounded-xl p-1 flex items-center justify-center cursor-pointer'>
-												<img src='public/images/react.png' className='object-contain' />
+								<div className='flex'>
+									<div>
+										<a onClick={() => { setProjectsModal(true) }}>
+											<div className='m-2 flex flex-col items-center justify-center' >
+												<div className='w-16 h-16 bg-slate-100 rounded-xl p-1 flex items-center justify-center cursor-pointer'>
+													<img src='public/images/react.png' className='object-contain' />
+												</div>
+												<p className='text-sm text-slate-100 mt-2'>Projects</p>
 											</div>
-											<p className='text-sm text-slate-100 mt-2'>Projects</p>
-										</div>
-									</a>
+										</a>
 
 
-									<a
-										href='https://www.linkedin.com/in/cembicakci/'
-										target='_blank'
-									>
-										<div className='m-2 flex flex-col items-center justify-center mt-6'>
-											<div className='w-20 h-20 cursor-pointer'>
-												<img src='public/images/linkedin.png' className="object-cover" />
+										<a
+											href='https://www.linkedin.com/in/cembicakci/'
+											target='_blank'
+										>
+											<div className='m-2 flex flex-col items-center justify-center mt-6'>
+												<div className='w-20 h-20 cursor-pointer'>
+													<img src='public/images/linkedin.png' className="object-cover" />
+												</div>
+												<p className='text-sm text-slate-100'>Linkedin</p>
 											</div>
-											<p className='text-sm text-slate-100'>Linkedin</p>
-										</div>
-									</a>
+										</a>
 
-									<a
-										href='https://www.github.com/cembicakci'
-										target='_blank'
-									>
-										<div className='m-2 flex flex-col items-center justify-center mt-6'>
-											<div className='w-20 h-20 cursor-pointer'>
-												<img src='public/images/github.png' className='object-contain' />
+										<a
+											href='https://www.github.com/cembicakci'
+											target='_blank'
+										>
+											<div className='m-2 flex flex-col items-center justify-center mt-6'>
+												<div className='w-20 h-20 cursor-pointer'>
+													<img src='public/images/github.png' className='object-contain' />
+												</div>
+												<p className='text-sm text-slate-100'>Github</p>
 											</div>
-											<p className='text-sm text-slate-100'>Github</p>
-										</div>
-									</a>
+										</a>
+
+									</div>
+
+									<div>
+										<a
+											onClick={() => {
+												document.documentElement.webkitRequestFullscreen()
+											}}>
+											<div className='m-2 flex flex-col items-center justify-center'>
+												<div className='w-16 h-16 bg-slate-100 rounded-xl p-1 flex items-center justify-center cursor-pointer'>
+													<MaximizeSvg />
+												</div>
+												<p className='text-sm text-slate-100 mt-2'>Full Screen</p>
+											</div>
+										</a>
+
+										<a
+											href='https://www.npmjs.com/~cembicakci'
+											target='_blank'
+										>
+											<div className='flex flex-col items-center justify-center mt-6'>
+												<div className='mt-2 w-16 h-16 cursor-pointer'>
+													<img src='public/images/npm.png' className='object-contain' />
+												</div>
+												<p className='text-sm text-slate-100 mt-2'>Package</p>
+											</div>
+										</a>
+
+									</div>
 
 								</div>
 
-								<div>
-									<a
-										onClick={() => {
-											document.documentElement.webkitRequestFullscreen()
-										}}>
-										<div className='m-2 flex flex-col items-center justify-center'>
-											<div className='w-16 h-16 bg-slate-100 rounded-xl p-1 flex items-center justify-center cursor-pointer'>
-												<MaximizeSvg />
-											</div>
-											<p className='text-sm text-slate-100 mt-2'>Full Screen</p>
-										</div>
-									</a>
-
-									<a
-										href='https://www.npmjs.com/~cembicakci'
-										target='_blank'
-									>
-										<div className='flex flex-col items-center justify-center mt-6'>
-											<div className='mt-2 w-16 h-16 cursor-pointer'>
-												<img src='public/images/npm.png' className='object-contain' />
-											</div>
-											<p className='text-sm text-slate-100 mt-2'>Package</p>
-										</div>
-									</a>
-
+								<div className='bg-gray-900 bg-opacity-30 text-slate-300 p-3 rounded-[14px] border border-gray-500 w-60'>
+									<h3 className='text-base text-gray-300'>{weatherData.name}</h3>
+									<p className='text-4xl text-white mt-1'>{(weatherData.main.temp - 273.15).toFixed(1)} °C</p>
+									<img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`} />
+									<span className='text-white text-sm'>{weatherData.weather[0].main}</span>
+									<div className='flex gap-2 items-center'>
+										<p className='text-sm text-white'>H: {(weatherData.main.temp_max - 273.15).toFixed(1)} °C</p>
+										<p className='text-sm text-white'>L: {(weatherData.main.temp_min - 273.15).toFixed(1)} °C</p>
+									</div>
 								</div>
 							</div>
 
