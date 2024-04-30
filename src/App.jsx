@@ -26,6 +26,7 @@ const App = () => {
 	const [projectsModal, setProjectsModal] = useState(false)
 
 	const [maiTooltip, setMailTooltip] = useState(false)
+	const [projectsTooltip, setProjectTooltop] = useState(false)
 	const [contactTooltip, setContactTooltip] = useState(false)
 
 	return (
@@ -91,7 +92,7 @@ const App = () => {
 									</div>
 
 									{
-										!aboutMeModal && !contactModal && (
+										!aboutMeModal && !contactModal && !projectsModal && (
 											<div className='cursor-pointer'>
 												<p className={`text-sm text-white font-bold`}>Finder</p>
 											</div>
@@ -99,16 +100,18 @@ const App = () => {
 									}
 
 									{
-										!contactModal && (
+										!contactModal && !projectsModal && (
 											<div className='cursor-pointer' onClick={() => { setAboutMeModal(true) }}>
 												<p className={`text-sm text-white ${aboutMeModal && 'font-bold'}`}>About Me</p>
 											</div>
 										)
 									}
 
-									<div className='cursor-pointer' onClick={() => { setContactModal(true) }}>
-										<p className={`text-sm text-white ${contactModal && 'font-bold'}`}>Contact</p>
-									</div>
+									{
+										!projectsModal && <div className='cursor-pointer' onClick={() => { setContactModal(true) }}>
+											<p className={`text-sm text-white ${contactModal && 'font-bold'}`}>Contact</p>
+										</div>
+									}
 
 									<div className='cursor-pointer' onClick={() => { setProjectsModal(true) }}>
 										<p className='text-sm text-white'>Projects</p>
@@ -123,8 +126,8 @@ const App = () => {
 							<div className='flex-1 flex justify-center px-4 my-4 self-start gap-3'>
 
 								<div>
-									<a>
-										<div className='m-2 flex flex-col items-center justify-center'>
+									<a onClick={() => { setProjectsModal(true) }}>
+										<div className='m-2 flex flex-col items-center justify-center' >
 											<div className='w-16 h-16 bg-slate-100 rounded-xl p-1 flex items-center justify-center cursor-pointer'>
 												<img src='public/images/react.png' className='object-contain' />
 											</div>
@@ -191,8 +194,9 @@ const App = () => {
 								className='bg-gray-900 bg-opacity-30 text-slate-300 bottom-5 flex items-center justify-center px-2 py-2 rounded-[14px] border border-gray-600 mb-4 self-center'
 							>
 								<div
-									className='flex justify-between gap-1 relative'
+									className='flex justify-between gap-2 relative'
 								>
+									{/* Email */}
 									<div
 										onMouseEnter={() => { setMailTooltip(true) }}
 										onMouseLeave={() => { setMailTooltip(false) }}
@@ -201,13 +205,29 @@ const App = () => {
 											target="_blank"
 											href="mailto:cmbicakci@gmail.com"
 										>
-											<img src='public/images/email.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2   transform transition-all ease-out" />
+											<img src='public/images/email.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out" />
 										</a>
 
 										<div className={`absolute whitespace-nowrap -top-14 -left-8 border border-gray-600 bg-gray-900 bg-opacity-30 text-slate-300 rounded-md px-4 py-2 ${maiTooltip ? 'block' : 'hidden'}`}>
 											<p className="text-sm ">Send me an email</p>
 										</div>
 									</div>
+
+									{/* Project */}
+									<div
+										onMouseEnter={() => { setProjectTooltop(true) }}
+										onMouseLeave={() => { setProjectTooltop(false) }
+										}>
+										<a className='w-[44px] h-[44px] mt-[2px] bg-slate-100 rounded-xl p-1 flex items-center justify-center cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out'>
+											<img src='public/images/react.png' className='object-contain' />
+										</a>
+
+										<div className={`absolute whitespace-nowrap -top-14 -left-1 border border-gray-600 bg-gray-900 bg-opacity-30 text-slate-300 rounded-md px-4 py-2 ${projectsTooltip ? 'block' : 'hidden'}`}>
+											<p className="text-sm ">Send my projects</p>
+										</div>
+									</div>
+
+									{/* Contact me */}
 									<div
 										onClick={() => { setContactModal(true) }}
 										onMouseEnter={() => { setContactTooltip(true) }}
@@ -218,6 +238,7 @@ const App = () => {
 											<p className="text-sm ">Contact Me</p>
 										</div>
 									</div>
+
 								</div>
 
 							</div>
