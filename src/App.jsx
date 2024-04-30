@@ -97,7 +97,7 @@ const App = () => {
 											<div className='flex flex-col'>
 												<div className='flex gap-4'>
 													<p className='text-base'>👋🏻</p>
-													<p className='text-base font-bold'>Hoşgeldin!</p>
+													<p className='text-base font-bold'>Welcome!</p>
 												</div>
 												<div className='mt-2'>
 													<p className='block md:hidden'>You can check it out also with desktop</p>
@@ -109,7 +109,7 @@ const App = () => {
 												onClick={() => { setInfo(false) }}
 												className='bg-gray-600 px-3 py-[2px] text-sm rounded-md'
 											>
-												Kapat
+												Close
 											</button>
 										</div>
 									</motion.div>
@@ -161,7 +161,7 @@ const App = () => {
 										<a onClick={() => { setProjectsModal(true) }}>
 											<div className='m-2 flex flex-col items-center justify-center' >
 												<div className='w-16 h-16 bg-slate-100 rounded-xl p-1 flex items-center justify-center cursor-pointer'>
-													<img src='public/images/react.png' className='object-contain' />
+													<img src='images/react.png' className='object-contain' />
 												</div>
 												<p className='text-sm text-slate-100 mt-2'>Projects</p>
 											</div>
@@ -174,7 +174,7 @@ const App = () => {
 										>
 											<div className='m-2 flex flex-col items-center justify-center mt-6'>
 												<div className='w-20 h-20 cursor-pointer'>
-													<img src='public/images/linkedin.png' className="object-cover" />
+													<img src='images/linkedin.png' className="object-cover" />
 												</div>
 												<p className='text-sm text-slate-100'>Linkedin</p>
 											</div>
@@ -186,7 +186,7 @@ const App = () => {
 										>
 											<div className='m-2 flex flex-col items-center justify-center mt-6'>
 												<div className='w-20 h-20 cursor-pointer'>
-													<img src='public/images/github.png' className='object-contain' />
+													<img src='images/github.png' className='object-contain' />
 												</div>
 												<p className='text-sm text-slate-100'>Github</p>
 											</div>
@@ -213,7 +213,7 @@ const App = () => {
 										>
 											<div className='flex flex-col items-center justify-center mt-6'>
 												<div className='mt-2 w-16 h-16 cursor-pointer'>
-													<img src='public/images/npm.png' className='object-contain' />
+													<img src='images/npm.png' className='object-contain' />
 												</div>
 												<p className='text-sm text-slate-100 mt-2'>Package</p>
 											</div>
@@ -254,7 +254,7 @@ const App = () => {
 										<a
 											href="tel:+905372627575"
 										>
-											<img src='public/images/phone.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out" />
+											<img src='images/phone.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out" />
 										</a>
 
 										<div className={`absolute whitespace-nowrap -top-14 -left-2 border border-gray-600 bg-gray-900 bg-opacity-30 text-slate-300 rounded-md px-4 py-2 ${phoneTooltip ? 'block' : 'hidden'}`}>
@@ -271,7 +271,7 @@ const App = () => {
 											target="_blank"
 											href="mailto:cmbicakci@gmail.com"
 										>
-											<img src='public/images/email.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out" />
+											<img src='images/email.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out" />
 										</a>
 
 										<div className={`absolute whitespace-nowrap -top-14 left-4 border border-gray-600 bg-gray-900 bg-opacity-30 text-slate-300 rounded-md px-4 py-2 ${maiTooltip ? 'block' : 'hidden'}`}>
@@ -285,7 +285,7 @@ const App = () => {
 										onMouseLeave={() => { setProjectTooltop(false) }
 										}>
 										<a className='w-[44px] h-[44px] mt-[2px] bg-slate-100 rounded-xl p-1 flex items-center justify-center cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out' onClick={() => { setProjectsModal(true) }}>
-											<img src='public/images/react.png' className='object-contain' />
+											<img src='images/react.png' className='object-contain' />
 										</a>
 
 										<div className={`absolute whitespace-nowrap -top-14 right-24 border border-gray-600 bg-gray-900 bg-opacity-30 text-slate-300 rounded-md px-4 py-2 ${projectsTooltip ? 'block' : 'hidden'}`}>
@@ -299,7 +299,7 @@ const App = () => {
 										onMouseEnter={() => { setContactTooltip(true) }}
 										onMouseLeave={() => { setContactTooltip(false) }}
 									>
-										<img src='public/images/contact.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out" />
+										<img src='images/contact.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out" />
 										<div className={`absolute whitespace-nowrap -top-14 right-14  border border-gray-600 bg-gray-900 bg-opacity-30 text-slate-300 rounded-md px-4 py-2 ${contactTooltip ? 'block' : 'hidden'}`}>
 											<p className="text-sm ">Contact Me</p>
 										</div>
@@ -309,7 +309,7 @@ const App = () => {
 
 									{/* Trash  */}
 									<div>
-										<img src='public/images/trash.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out" />
+										<img src='images/trash.png' className="w-12 h-12 cursor-pointer hover:scale-125 hover:mx-2 transform transition-all ease-out" />
 									</div>
 
 								</div>

@@ -10,7 +10,7 @@ body {
 
 .bg-cover {
   background-image: url('../public/images/ventura.jpg');
-background-position: center;
+  background-position: center;
 }
 
 @media only screen and (max-width: 600px) {
