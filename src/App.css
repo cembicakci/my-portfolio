@@ -9,10 +9,26 @@ body {
 }
 
 .bg-cover {
-  background-image: url('../public//images/ventura.jpg');
+  background-image: url('../public/images/ventura.jpg');
+background-position: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .bg-cover {
+    background-image: url('../public/images/iphone.png');
+  }
 }
 
 .info-shadow {
   background: radial-gradient(141.37% 103.39% at 47.19% -0.62%, rgba(40, 40, 40, 0.5) 0%, rgba(96, 96, 96, 0.9) 100%);
   backdrop-filter: blur(4.5px);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }

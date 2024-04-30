@@ -5,7 +5,7 @@ import { AppleSvg } from "../../assets/svg";
 
 const ProjectDetail = ({ item }) => {
 	return (
-		<div className="mx-10 mt-6 overflow-y-scroll">
+		<div className="md:mx-10 mt-6 overflow-y-scroll">
 			<div className="flex">
 				<img
 					src={item.logo}

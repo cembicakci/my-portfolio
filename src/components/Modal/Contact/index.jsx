@@ -19,10 +19,10 @@ const Contact = ({ closeModal, handleAboutMe }) => {
 
 				<div className="my-10">
 					<h3 className="text-2xl font-bold">Cem Bıçakcı</h3>
-					<p className="text-base mt-1">Front-end Developer</p>
+					<p className="text-base mt-1">Software Developer</p>
 				</div>
 
-				<div className="relative px-12 mt-2 border-t border-t-gray-600 border-b border-b-gray-600 py-3 flex items-center justify-between">
+				<div className="relative px-4 md:px-12 mt-2 border-t border-t-gray-600 border-b border-b-gray-600 py-3 flex items-center justify-between">
 					<ItemRow
 						title={"email:"}
 						value={"cmbicakci@gmail.com"}
@@ -31,7 +31,7 @@ const Contact = ({ closeModal, handleAboutMe }) => {
 					<div
 						onMouseEnter={() => setMailHovered(true)}
 						onMouseLeave={() => setMailHovered(false)}
-						className="cursor-pointer"
+						className="cursor-pointer ml-4 md:ml-0"
 					>
 
 						<a

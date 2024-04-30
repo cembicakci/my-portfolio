@@ -25,7 +25,7 @@ const Modal = ({ closeModal, title, children, size = 'lg' }) => {
 						initial={{ scale: 0 }}
 						animate={{ scale: 1 }}
 						transition={{ duration: 0.3 }}
-						className="bg-gray-900 bg-opacity-50 p-3 border border-gray-600 rounded-lg shadow-2xl"
+						className="bg-gray-900 bg-opacity-50 p-3 border border-gray-600 rounded-lg shadow-2xl glass"
 					>
 						<div className="flex items-center justify-between">
 							<div className="flex items-center gap-2">

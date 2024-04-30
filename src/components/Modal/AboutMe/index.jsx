@@ -3,7 +3,7 @@ import Button from "../../Button"
 import ItemRow from "../../ItemRow"
 import Modal from "../index"
 
-const AboutMe = ({ closeModal, handleContact }) => {
+const AboutMe = ({ closeModal, handleContact, handleProject }) => {
 	return (
 		<Modal
 			closeModal={closeModal}
@@ -13,14 +13,14 @@ const AboutMe = ({ closeModal, handleContact }) => {
 
 				<div className="my-10">
 					<h3 className="text-2xl font-bold">Cem Bıçakcı</h3>
-					<p className="text-base mt-1">Front-end Developer</p>
+					<p className="text-base mt-1">Software Developer</p>
 				</div>
 
 				<div className="px-12">
 					<div className="mt-1">
 						<ItemRow
 							title={"Experience:"}
-							value={"+1 Years"}
+							value={"+1.5 Years"}
 						/>
 					</div>
 					<div className="mt-4">
@@ -43,7 +43,7 @@ const AboutMe = ({ closeModal, handleContact }) => {
 				<div className="mt-8 flex items-center justify-center gap-2 mb-6">
 					<Button
 						text={"My Projects"}
-						click={() => { }}
+						click={() => { handleProject() }}
 					/>
 					<Button
 						text={"Contact"}
