@@ -246,7 +246,7 @@ const App = () => {
 							</div>
 
 							<div
-								className='bg-gray-900 bg-opacity-30 text-slate-300 bottom-5 flex items-center justify-center px-2 py-2 rounded-[14px] border border-gray-500 mb-12 md:mb-4 self-center glass'
+								className='bg-gray-900 bg-opacity-30 text-slate-300 flex items-center justify-center px-2 py-2 rounded-[14px] border border-gray-500 mb-12 md:mb-4 self-center glass'
 							>
 								<div
 									className='flex justify-between gap-2 relative'
@@ -321,6 +321,8 @@ const App = () => {
 								</div>
 
 							</div>
+
+							<div className={`${weatherData.id ? 'h-12' : 'h-8'} md:h-0`}/>
 						</motion.div>
 
 					</>
