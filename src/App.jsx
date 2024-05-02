@@ -322,7 +322,7 @@ const App = () => {
 
 							</div>
 
-							<div className={`${weatherData.id ? 'h-12' : 'h-8'} md:h-0`}/>
+							<div className={`${weatherData.id ? 'h-14' : 'h-4'} md:h-0`}/>
 						</motion.div>
 
 					</>
