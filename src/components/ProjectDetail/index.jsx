@@ -30,7 +30,7 @@ const ProjectDetail = ({ item }) => {
 				<p className="mt-2 text-white text-sm">{item.description}</p>
 			</div>
 			<div className="w-full border-[1px] border-gray-500 mt-4" />
-			<div className="mt-4">
+			<div className="mt-4 overflow-x-auto">
 				<h2 className="text-white text-xl">See detail</h2>
 				<div className="mt-4 flex gap-4">
 					{
