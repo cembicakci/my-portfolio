@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-
 const ItemRow = ({ title, value }) => {
 	return (
 		<div className="flex gap-3">
